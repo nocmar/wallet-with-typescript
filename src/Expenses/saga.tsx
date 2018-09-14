@@ -10,9 +10,8 @@ const expenseSample1: IExpense = {
     category: "Alkohol",
     id: 2,
     notes: "notes",
-    transactionBankType: "type",
-    // tslint:disable-next-line:object-literal-sort-keys
     tranactionDate: "2019-01-01",
+    transactionBankType: "type",
     transactionDetails: "detials",
     transactionType: "trasnaction type"
   };
@@ -24,20 +23,14 @@ const expenseSample1: IExpense = {
     category: "Transport",
     id: 2,
     notes: "notes",
-    transactionBankType: "type",
-    // tslint:disable-next-line:object-literal-sort-keys
     tranactionDate: "2019-01-01",
+    transactionBankType: "type",
     transactionDetails: "detials",
     transactionType: "trasnaction type"
   };
   
-// Here we use `redux-saga` to trigger actions asynchronously. `redux-saga` uses something called a
-// "generator function", which you can read about here:
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*
-
 function* handleFetch() {
   try {
-    // To call async functions, use redux-saga's `call()`.
     const res = {
         error: "",
         payload :[expenseSample1,expenseSample2]
