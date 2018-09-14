@@ -1,11 +1,12 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as moment from "moment";
 import * as React from "react";
-import * as reactstrap from "reactstrap";
 import "./App.css";
 import Expenses from "./Components/Expense";
 import { IExpense } from "./Components/ExpenseRow";
-import  './styles/styles.css';
+import Header from "./Components/Header";
+import Sidebar from "./Components/Sidebar";
+import "./styles/styles.css";
 
 const expenseSample: IExpense = {
   account: 132,
@@ -28,12 +29,13 @@ class App extends React.Component {
     console.log(currentDate);
     return (
       <div className="App">
+        <Header />
         <div className="app-body">
-        <main className="styles.main">
-        <div className="container-fluid">
-          <reactstrap.Button color="danger">Danger!</reactstrap.Button>
-          <Expenses expenses={[expenseSample]} />
-          </div>
+          <Sidebar />
+          <main className="main">
+            <div className="container-fluid">
+              <Expenses expenses={[expenseSample]} />
+            </div>
           </main>
         </div>
       </div>

@@ -5,9 +5,6 @@ import ExpenseRow, { IExpense } from './ExpenseRow';
 export interface IProps {
   expenses: IExpense[];
 }
-
-
-
 export default class Expenses extends React.Component<IProps>{
     public render(){
        const rows = this.props.expenses.map((expense)=>{
