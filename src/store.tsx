@@ -1,7 +1,7 @@
 import { createStore } from "redux";
 import { Action, AnyAction, combineReducers, Dispatch } from 'redux'
-import { expenseReducer } from "./Reducers/expensesReducer";
-import { IExpenseState } from "./Reducers/types";
+import { expenseReducer } from "./Expenses/reducer";
+import { IExpenseState } from "./Expenses/types";
 
 export interface IApplicationState {
   expenses: IExpenseState;
