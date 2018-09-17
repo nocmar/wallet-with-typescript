@@ -16,6 +16,20 @@ interface IState{
       category: string,
       approved: boolean
 }
+const statusOptions = [
+  {
+    label: '',
+    value: 'Select',
+  },
+  {
+    label: 'Spożywcze',
+    value: 'Spożywcze',
+  },
+  {
+    label: "Transport",
+    value: 'Transport',
+  },
+]
 
 export default class NewExpense extends React.Component<any,IState> {
   constructor(props:any) {
@@ -31,7 +45,9 @@ export default class NewExpense extends React.Component<any,IState> {
     notes: "",
     showButton: true
 }
+this.handleAddNewClick = this.handleAddNewClick.bind(this);
   }
+
   public handleInputChange(event:any) {
     const target = event.target;
     const value = target.value;
@@ -52,35 +68,37 @@ export default class NewExpense extends React.Component<any,IState> {
     this.setState({ showButton: false, modalIsOpen: true })
   }
 
-//   public handleOKClick(event:any) {
-//     const validationResult = this.form.validateAll()
-//     if (Object.keys(validationResult).length === 0) {
-//       const expense = {
-//           "account": "",
-//           "amount": this.state.amount,
-//           "approved": false,
-//           "category": this.state.category,
-//           "id": Date.now(),
-//           "notes": this.state.notes,
-//           "tranactionDate": moment(this.state.date).format('MM/DD/YYYY'),
-//           "transactionBankType": "Przelew",
-//           "transactionDetails": this.state.details,
-//           "transactionType": "Obciażenie"
-//       }
-//       this.props.addExpense(expense);
+  public handleOKClick(event:any) {
+    // tslint:disable-next-line:no-console
+    console.log("handle click");
+    // const validationResult = this.form.validateAll()
+    // if (Object.keys(validationResult).length === 0) {
+    //   const expense = {
+    //       "account": "",
+    //       "amount": this.state.amount,
+    //       "approved": false,
+    //       "category": this.state.category,
+    //       "id": Date.now(),-
+    //       "notes": this.state.notes,
+    //       "tranactionDate": moment(this.state.date).format('MM/DD/YYYY'),
+    //       "transactionBankType": "Przelew",
+    //       "transactionDetails": this.state.details,
+    //       "transactionType": "Obciażenie"
+    //   }
+    //   this.props.addExpense(expense);
 
-//       this.setState({
-//         amount: 0,
-//         approved: false,
-//         category: "",
-//         date: moment(),
-//         details: "",
-//         modalIsOpen: false,
-//         notes: "",
-//         showButton: true
-//       });
-//     }
-//   }
+    //   this.setState({
+    //     amount: 0,
+    //     approved: false,
+    //     category: "",
+    //     date: moment(),
+    //     details: "",
+    //     modalIsOpen: false,
+    //     notes: "",
+    //     showButton: true
+    //   });
+    // }
+  }
 
   public handleCancelClick(event:any) {
     this.setState({ showButton: true, modalIsOpen: false })
@@ -99,12 +117,12 @@ export default class NewExpense extends React.Component<any,IState> {
           <ModalHeader>New expense</ModalHeader>
           <ModalBody>
             <Form>
-
+        <div>
               <div className="form-group row">
                 <label className="col-md-4 form-control-label">Amount*</label>
                 <div className="col-md-8">
                   <div className="input-prepend input-group">
-                       <Text type="number" className="form-control" style={{ width: "100%" }}name="amount" validations={['required']} onChange={this.handleInputChange} value={this.state.amount} placeholder="Amount" />
+                       <Text type="number" className="form-control" style={{ width: "100%" }}name="amount" onChange={this.handleInputChange} value={this.state.amount} placeholder="Amount" />
                   </div>
                 </div>
            
@@ -112,14 +130,7 @@ export default class NewExpense extends React.Component<any,IState> {
               <div className="form-group row">
                 <label className="col-md-4 form-control-label">Category*</label>
                 <div className="col-md-8">
-                  <Select errorClassName='is-invalid-input' name='category' value={this.state.category} validations={['required']} className="form-control" onChange={this.handleInputChange}>
-                    <option value="">Select...</option>
-                    <option value="Spożywcze">Spożywcze</option>
-                    <option value="Alkohol">Alkohol</option>
-                    <option value="Samochód">Samochód</option>
-                    <option value="Transport">Transport</option>
-                    <option value="Mieszkanie">Mieszkanie</option>
-                  </Select>
+                  <Select name='category' options={statusOptions} value={this.state.category} className="form-control" onChange={this.handleInputChange}/>
                 </div>
               </div>
               <div className="form-group row">
@@ -146,7 +157,7 @@ export default class NewExpense extends React.Component<any,IState> {
                   <input type="text" className="form-control" name="notes" onChange={this.handleInputChange} value={this.state.notes} />
                 </div>
               </div>
-
+              </div>
             </Form>
           </ModalBody>
           <ModalFooter>
