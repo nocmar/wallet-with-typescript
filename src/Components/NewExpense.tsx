@@ -52,6 +52,7 @@ this.handleAddNewClick = this.handleAddNewClick.bind(this);
     const target = event.target;
     const value = target.value;
     const name = target.name;
+ 
     // tslint:disable-next-line:no-console
     console.log(value);
     // tslint:disable-next-line:no-console
