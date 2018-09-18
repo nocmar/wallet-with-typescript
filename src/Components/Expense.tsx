@@ -2,7 +2,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import * as React from "react";
 import ExpenseRow, { IExpense } from './ExpenseRow';
 import NewExpense from './NewExpense';
-import ReactFormSample from './ReactFormSample';
 export interface IProps {
   expenses: IExpense[];
 }
@@ -15,7 +14,6 @@ export default class Expenses extends React.Component<IProps>{
       
   return (
     <div>
-      <ReactFormSample/>
       <NewExpense/>
       {/* tslint:disable-next-line:jsx-no-lambda*/}
         <table className="table table-hover table-outline mb-0 hidden-sm-down">
